@@ -15,6 +15,8 @@ namespace AppRpgEtec.ViewModels.Usuarios
         private UsuarioService _uService;
         public ICommand AutenticarCommand { get; set; }
 
+        public ICommand RegistrarCommand { get; set; }
+
 
         // CONSTRUTOR 
         public UsuarioViewModel()
@@ -103,6 +105,9 @@ namespace AppRpgEtec.ViewModels.Usuarios
                 {
                     string mensagem = $"Usuário Id {uRegistrado.Id} registrado com sucesso!";
                     await Application.Current.MainPage.DisplayAlert("Informação", mensagem, "Ok");
+
+                    await Application.Current.MainPage
+                        .Navigation.PopAsync();
                 }
             }
             catch (Exception ex) 
