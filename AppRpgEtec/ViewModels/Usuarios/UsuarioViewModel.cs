@@ -14,8 +14,8 @@ namespace AppRpgEtec.ViewModels.Usuarios
     {
         private UsuarioService _uService;
         public ICommand AutenticarCommand { get; set; }
-
         public ICommand RegistrarCommand { get; set; }
+        public ICommand DirecionarParaCadastroCommand { get; set; }
 
 
         // CONSTRUTOR 
@@ -28,6 +28,8 @@ namespace AppRpgEtec.ViewModels.Usuarios
         public void InicializarCommands()
         {
             AutenticarCommand = new Command(async() => await AutenticarUsuario());
+            RegistrarCommand = new Command(async () => await RegistrarUsuario());
+            DirecionarParaCadastroCommand = new Command(async () => await DirecionarParaCadastro());
         }
 
 
@@ -53,7 +55,7 @@ namespace AppRpgEtec.ViewModels.Usuarios
                 OnPropertyChanged();
             }
         }
-        
+
         #endregion
 
         public async Task AutenticarUsuario()
@@ -67,8 +69,8 @@ namespace AppRpgEtec.ViewModels.Usuarios
 
                 if (!string.IsNullOrEmpty(uAutenticado.Token))
                 {
-                    string mensagem = $"Bem vindo { u.Username}";
-                    Preferences.Set("UsuarioToken", uAutenticado.Token) ;
+                    string mensagem = $"Bem vindo {u.Username}";
+                    Preferences.Set("UsuarioToken", uAutenticado.Token);
                     Preferences.Set("UsuarioId", uAutenticado.Id);
                     Preferences.Set("UsuarioUsername", uAutenticado.Username);
                     Preferences.Set("UsuarioPerfil", uAutenticado.Perfil);
@@ -91,6 +93,8 @@ namespace AppRpgEtec.ViewModels.Usuarios
             }
         }
 
+        #region Métodos
+
         public async Task RegistrarUsuario()
         {
             try
@@ -101,7 +105,7 @@ namespace AppRpgEtec.ViewModels.Usuarios
 
                 Usuario uRegistrado = await _uService.PostRegistrarUsuarioAsync(u);
 
-                if (uRegistrado.Id != 0) 
+                if (uRegistrado.Id != 0)
                 {
                     string mensagem = $"Usuário Id {uRegistrado.Id} registrado com sucesso!";
                     await Application.Current.MainPage.DisplayAlert("Informação", mensagem, "Ok");
@@ -110,14 +114,28 @@ namespace AppRpgEtec.ViewModels.Usuarios
                         .Navigation.PopAsync();
                 }
             }
-            catch (Exception ex) 
-            { 
-            
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage
+                        .DisplayAlert("Informação", ex.Message + "Detalhes: " + ex.InnerException, "OK");
             }
 
-
-
-
         }
+
+
+        public async Task DirecionarParaCadastro()
+        {
+            try
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new CadastroView());
+            }
+            catch (Exception ex)
+            {
+                await Application.Current.MainPage
+                .DisplayAlert("Informação", ex.Message + "Detalhes: " + ex.InnerException, "OK");
+            }
+        }
+        #endregion
+
     }
 }
