@@ -23,7 +23,7 @@
             <Label Text="Não possui login?"></Label>
             <Label Text="Cadastre-se" FontAttributes="Bold"></Label>
             <HorizontalStackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding DirecionarCadastroCommand}"></TapGestureRecognizer>
+                <TapGestureRecognizer Command="{Binding DirecionarParaCadastroCommand}"></TapGestureRecognizer>
             </HorizontalStackLayout.GestureRecognizers>
         </HorizontalStackLayout>
 

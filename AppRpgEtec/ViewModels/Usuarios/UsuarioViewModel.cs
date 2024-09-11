@@ -1,5 +1,6 @@
 ﻿using AppRpgEtec.Models;
 using AppRpgEtec.Services.Usuarios;
+using AppRpgEtec.Views.Usuarios;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -21,7 +22,8 @@ namespace AppRpgEtec.ViewModels.Usuarios
         // CONSTRUTOR 
         public UsuarioViewModel()
         {
-            _uService = new UsuarioService();
+            string token = Preferences.Get("UsuarioToken", string.Empty);
+            _uService = new UsuarioService(token);
             InicializarCommands();
         }
 

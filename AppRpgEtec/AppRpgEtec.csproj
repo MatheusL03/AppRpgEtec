@@ -64,6 +64,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\Usuarios\CadastroView.xaml.cs">
+	    <DependentUpon>CadastroView.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\Personagens\ListagemView2.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
