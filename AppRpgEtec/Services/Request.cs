@@ -20,7 +20,7 @@ namespace AppRpgEtec.Services
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 return int.Parse(serialized);
             else
-                return 0;
+                throw new Exception(serialized);
         }
         public async Task<TResult> PostAsync<TResult>(string uri, TResult data, string token)
         {
@@ -34,6 +34,9 @@ namespace AppRpgEtec.Services
             TResult result = data;
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 result = await Task.Run(() => JsonConvert.DeserializeObject<TResult>(serialized));
+            else
+                throw new Exception(serialized);
+
             return result;
         }
 
