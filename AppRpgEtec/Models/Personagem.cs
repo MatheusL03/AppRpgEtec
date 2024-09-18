@@ -27,6 +27,8 @@ namespace AppRpgEtec.Models
 
         public int Derrota { get; set; }
 
+        public int Vitorias { get; set; }
+
         public ClasseEnum Classe { get; set; }
 
     }

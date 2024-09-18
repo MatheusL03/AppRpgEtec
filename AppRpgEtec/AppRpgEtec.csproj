@@ -70,6 +70,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\Personagens\CadastroPersonagemView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Personagens\ListagemView2.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
