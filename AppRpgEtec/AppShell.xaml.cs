@@ -10,8 +10,8 @@ namespace AppRpgEtec
 
             Routing.RegisterRoute("cadPersonagemView", typeof(CadastroPersonagemView));
 
-            viewModel = new AppShellViewModel();
-            BindingContext = ViewModels;
+            /*viewModel = new AppShellViewModel();
+            BindingContext = ViewModels;*/
         }
     }
 }

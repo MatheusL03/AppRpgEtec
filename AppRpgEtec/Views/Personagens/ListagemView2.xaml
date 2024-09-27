@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppRpgEtec.Views.Personagens.ListagemView2"
              Title="ListagemView2">
-    <Shell.TitleView>
-            <Button Command="{Binding NovoPersonagem}" Text="Novo" HorizontalOptions="End"></Button>
-        </Shell.TitleView>
 
     <ScrollView>
         <VerticalStackLayout Padding="10, 0, 0, 0" VerticalOptions="FillAndExpand">
+            <Button Command="{Binding NovoPersonagem}" Text="Novo" HorizontalOptions="End"></Button>
+     
             <ListView x:Name="listView" HasUnevenRows="True" ItemsSource="{Binding Personagens}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
