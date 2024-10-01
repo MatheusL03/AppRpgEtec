@@ -11,7 +11,7 @@ namespace AppRpgEtec.Services.Usuarios
     public class UsuarioService : Request
     {
         private readonly Request _request;
-        private const string apiUrlBase = "https://rpgapi20242pam.azurewebsites.net/Usuarios";
+        private const string _apiUrlBase = "https://rpgapi20242pam.azurewebsites.net/Usuarios";
 
         private string _token;
 
@@ -24,16 +24,18 @@ namespace AppRpgEtec.Services.Usuarios
         public async Task<Usuario> PostRegistrarUsuarioAsync(Usuario u)
         {
             string urlComplementar = "/Registrar";
-            u.Id = await _request.PostReturnIntAsync(apiUrlBase + urlComplementar, u, _token);
+            u.Id = await _request.PostReturnIntAsync(_apiUrlBase + urlComplementar, u, string.Empty);
             return u;
         }
 
         public async Task<Usuario> PostAutenticarAsync(Usuario u)
         {
             string urlComplementar = "/Autenticar";
-            u = await _request.PostAsync(apiUrlBase + urlComplementar, u, string.Empty);
+            u = await _request.PostAsync(_apiUrlBase + urlComplementar, u, string.Empty);
 
             return u;
         }
+
+
     }
 }

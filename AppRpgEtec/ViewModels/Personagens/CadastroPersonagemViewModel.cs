@@ -33,17 +33,28 @@ namespace AppRpgEtec.ViewModels.Personagens
         }
 
         #region Atributos
+
+        private int id;
+        private string nome;
+        private int pontosVida;
+        private int forca;
+        private int defesa;
+        private int inteligencia;
+        private int disputas;
+        private int vitorias;
+        private int derrotas;
+
         public int Id
         {
-            get => Id; 
+            get => id; 
             set
             {
-                Id = value;
+                id = value;
                 OnPropertyChanged();
             }
         }
 
-        public string nome
+        public string Nome
         {
             get => nome;
             set
@@ -53,7 +64,7 @@ namespace AppRpgEtec.ViewModels.Personagens
             }
         }
 
-        public int pontosVida
+        public int PontosVida
         {
             get => pontosVida;
             set
@@ -63,7 +74,7 @@ namespace AppRpgEtec.ViewModels.Personagens
             }
         }
 
-        public int forca
+        public int Forca
         {
             get => forca;
             set
@@ -74,7 +85,7 @@ namespace AppRpgEtec.ViewModels.Personagens
         }
 
 
-        public int defesa
+        public int Defesa
         {
             get => defesa;
             set
@@ -84,7 +95,7 @@ namespace AppRpgEtec.ViewModels.Personagens
             }
         }
 
-        public int inteligencia
+        public int Inteligencia
         {
             get => inteligencia;
             set
@@ -94,7 +105,7 @@ namespace AppRpgEtec.ViewModels.Personagens
             }
         }
 
-        public int disputas
+        public int Disputas
         {
             get => disputas;
             set
@@ -104,7 +115,7 @@ namespace AppRpgEtec.ViewModels.Personagens
             }
         }
 
-        public int vitorias
+        public int Vitorias
         {
             get => vitorias;
             set
@@ -114,7 +125,7 @@ namespace AppRpgEtec.ViewModels.Personagens
             }
         }
 
-        public int derrotas
+        public int Derrotas
         {
             get => derrotas;
             set
@@ -202,7 +213,7 @@ namespace AppRpgEtec.ViewModels.Personagens
                 await Application.Current.MainPage
                     .DisplayAlert("Mensagem", "Dados salvos com sucesso!", "Ok");
 
-                await Shell.Current.GoToAsync("..."); // Remove a página atual da pilha de páginas
+                await Shell.Current.GoToAsync(".."); // Remove a página atual da pilha de páginas
             }
             catch (Exception ex) 
             {

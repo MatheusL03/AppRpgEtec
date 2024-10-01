@@ -23,9 +23,9 @@ namespace AppRpgEtec.Services.Personagens
             _request = new Request();
         }
 
-        public async Task<Personagem> PostPersonagemAsync(Personagem p)
+        public async Task<int> PostPersonagemAsync(Personagem p)
         {
-            return await _request.PostAsync<Personagem>(apiUrlBase, p, _token);
+            return await _request.PostReturnIntAsync(apiUrlBase, p, _token);
         }
 
         public async Task<ObservableCollection<Personagem>> GetPersonagensAsync()
