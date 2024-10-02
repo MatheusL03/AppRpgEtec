@@ -84,7 +84,7 @@ namespace AppRpgEtec.Services
             httpClient.DefaultRequestHeaders.Authorization
             = new AuthenticationHeaderValue("Bearer", token);
 
-            HttpResponseMessage response = await httpClient.GetAsync(uri);
+            HttpResponseMessage response = await httpClient.DeleteAsync(uri);
             string serialized = await response.Content.ReadAsStringAsync();
 
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
